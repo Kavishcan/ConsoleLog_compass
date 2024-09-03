@@ -1,0 +1,32 @@
+/* assets/root.css */
+:root {
+  --primary-color: #0a7ea4;
+  --secondary-color: #fff;
+  --background-color: #151718;
+  --text-color: #ecedee;
+}
+
+body {
+  margin: 0;
+  font-family: "Barlow", sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--primary-color);
+}
+
+a {
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
