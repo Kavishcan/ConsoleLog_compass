@@ -14,7 +14,7 @@ const StyledText = styled(Text);
 
 const Hero = () => {
   return (
-    <StyledView className="mt-10">
+    <StyledView className="my-10">
       <StyledView className="flex flex-row justify-between p-3 px-5 items-center">
         <StyledView className="flex flex-row gap-3 items-center">
           <Image source={require("../../assets/images/home/avatar.png")} />
