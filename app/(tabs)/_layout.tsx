@@ -1,34 +1,58 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { View, Text } from "react-native";
+import React from "react";
+import { Tabs } from "expo-router";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+export default function TabsLayout() {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
+    <Tabs>
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+          title: "Home",
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="home" size={24} color="black" />
           ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="visa"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+          title: "Visa",
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="search" size={24} color="black" />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="services"
+        options={{
+          title: "Services",
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="briefcase" size={24} color="black" />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="booking"
+        options={{
+          title: "Booking",
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="clock-o" size={24} color="black" />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="travel"
+        options={{
+          title: "Travel",
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="plane" size={24} color="black" />
           ),
         }}
       />
