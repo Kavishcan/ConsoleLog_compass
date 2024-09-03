@@ -4,10 +4,10 @@ import React from "react";
 export default function Hero() {
   return (
     <View>
-      <View>
-        <View>
+      <View className="">
+        <View className="bg-blue-900">
           <Image source={require("../../assets/images/home/avatar.png")} />
-          <Text>Hi, Bella</Text>
+          <Text className="text-white">Hi, Bella</Text>
         </View>
         <View>
             <Image source={require("../../assets/images/home/notification.png")} />

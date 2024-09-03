@@ -9,7 +9,13 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons"; // Make sure to install expo vector icons
 
-const StepItem = ({ number, title }) => (
+// adding the types
+interface StepItemProps {
+  number: string;
+  title: string;
+}
+
+const StepItem : React.FC<StepItemProps> = ({ number, title }) => (
   <View className="flex-row items-center p-6 border border-gray-700 rounded-3xl">
     <Text className="text-yellow-400 font-bold mr-3">{number}</Text>
     <Text className="text-white flex-1">{title}</Text>
