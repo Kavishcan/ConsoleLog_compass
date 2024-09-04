@@ -4,7 +4,7 @@ import React from "react";
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
-    Barlow: require("../assets/fonts/Barlow-Regular.ttf"),
+    "Barlow": require("../assets/fonts/Barlow-Regular.ttf"),
   });
 
   return (
