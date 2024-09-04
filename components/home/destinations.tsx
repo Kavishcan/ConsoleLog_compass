@@ -31,7 +31,7 @@ export default function Destinations() {
     <StyledView className="w-[90%] m-auto">
       {/* title */}
       <StyledView className="w-full flex flex-row items-center justify-between mb-2">
-        <StyledText className="text-white text-xl">Top Destinations</StyledText>
+        <StyledText className="text-white" style={{ fontSize: 24,}}>Top Destinations</StyledText>
         <StyledView className="flex flex-row items-center gap-2">
           <StyledText className="text-white">View All</StyledText>
           <AntDesign name="arrowright" size={20} color="#FFBE29" />

@@ -13,7 +13,7 @@ const StyledView = styled(View);
 
 export default function Home() {
   return (
-    <ScrollView className="bg-black text-white">
+    <ScrollView className="bg-black text-white" style={{ fontFamily: 'Barlow' }}>
       <Hero />
       <Destinations />
       <Events />
