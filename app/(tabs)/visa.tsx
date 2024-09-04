@@ -38,9 +38,14 @@ const StepItem = ({
 export default function Visa() {
   const navigation = useNavigation();
 
-  const handlePress = () => {
+  const handlePressOnArrival = () => {
+    navigation.navigate("onArrivalVisaApply/index");
+  };
+
+  const handlePressVisa = () => {
     navigation.navigate("visaApply/index");
   };
+
   return (
     <ScrollView className="bg-[#1E1E1E] flex-1 px-4 mt-12">
       <View className="flex-1 flex-row gap-2 pt-6">
@@ -57,7 +62,7 @@ export default function Visa() {
         Step-by-step guide
       </Text>
 
-      <Pressable onPress={handlePress}>
+      <Pressable onPress={handlePressOnArrival}>
         <View className="rounded-3xl overflow-hidden mb-6 flex flex-col">
           <View className="bg-teal-800 p-4">
             <Text className="text-[#FFBE29] font-semibold mb-1 text-2xl">
@@ -88,7 +93,7 @@ export default function Visa() {
         </View>
         <Pressable
           className="bg-white px-4 py-1 rounded-full"
-          onPress={handlePress}
+          onPress={handlePressVisa}
         >
           <Text className="text-teal-900 font-semibold">Apply</Text>
         </Pressable>

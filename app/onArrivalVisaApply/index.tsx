@@ -3,8 +3,8 @@ import { View, Text, ScrollView, Pressable } from "react-native";
 import { Ionicons } from "@expo/vector-icons"; // Make sure to install expo vector icons
 import VisaForm from "@/components/visa/visaForm";
 import VisaApplication from "@/components/visa/visaApplication";
-import ProcessingStatus from "@/components/visa/processingStatus";
 import PaymentMethod from "@/components/visa/paymentMethod";
+import AgreeTerms from "@/components/visa/agreeTerms";
 
 const StepItem = ({ number, title }: { number: string; title: string }) => (
   <Pressable className="flex-row items-center p-4 mx-2 mb-4 border border-gray-700 rounded-3xl">
@@ -18,23 +18,24 @@ const StepItem = ({ number, title }: { number: string; title: string }) => (
   </Pressable>
 );
 
-export default function VisaApply() {
+export default function onArrivalVisaApply() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSecondOpen, setIsSecondOpen] = useState(false);
 
   return (
     <ScrollView className="bg-[#0C0F16] flex-1 mt-12">
       <Text className="text-white px-4 text-lg font-thin my-6">
-        Lets Start Applying
+        Step-by-step guide
       </Text>
 
       <View className="flex-row justify-between items-center bg-white px-4 py-2 mb-2">
         <View className="flex-1 ">
           <Text className="text-[#0C0F16] text-lg font-bold">
-            Select Your Visa Type
+            How it works?
           </Text>
           <Text className="text-gray-400 text-xs mt-2">
-            Choose the appropriate visa type based on your travel purpose:
+            Forget the paperwork! Now, you can fill out a simple form online and
+            generate a QR code that serves as your on-arrival visa.
           </Text>
         </View>
         <Pressable
@@ -54,15 +55,18 @@ export default function VisaApply() {
       </View>
 
       {/* Separate section for the expandable content */}
-      {isOpen && <PaymentMethod />}
+      {isOpen && (
+        <View className="mt-2 bg-transparent">
+          <StepItem number="1" title="Complete the Form:" />
+          <StepItem number="2" title="Generate Your QR Code:" />
+          <StepItem number="3" title="Use the QR Code:" />
+        </View>
+      )}
 
       <View className="flex-row justify-between items-center bg-white px-4 py-2 mb-2">
         <View className="flex-1 ">
           <Text className="text-[#0C0F16] text-lg font-bold">
-            Submit Documents
-          </Text>
-          <Text className="text-gray-400 text-xs mt-2">
-            You'll need to submit the following to proceed
+            On Arrival Visa Application
           </Text>
         </View>
         <Pressable
@@ -83,10 +87,18 @@ export default function VisaApply() {
       {/* Separate section for the expandable content */}
       {isSecondOpen && (
         <>
+          <VisaForm />
           <VisaApplication />
+          <Text className="text-white mx-4 mt-2 mb-4">Payment Method</Text>
+          <PaymentMethod />
+          <AgreeTerms />
+          <Pressable className="bg-teal-600 py-4 rounded-lg m-4">
+            <Text className="text-white text-center font-semibold text-lg">
+              Submit Application
+            </Text>
+          </Pressable>
         </>
       )}
-      <ProcessingStatus />
     </ScrollView>
   );
 }
