@@ -1,17 +1,21 @@
-import React from "react";
-import { styled } from "nativewind";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, Dimensions } from "react-native";
 
-const StyledView = styled(View);
-const StyledText = styled(Text);
+const Offer = ({ offer }) => (
+  <View key={offer.id} className="relative mb-4">
+    <Image
+      source={offer.image}
+      style={{
+        width: Dimensions.get("screen").width * 0.9,
+        height: 200,
+        borderRadius: 15,
+      }}
+    />
+    <View className="absolute bottom-2 left-2 right-2 bg-transparent bg-opacity-50 rounded-lg p-2">
+      <Text className="text-white font-bold text-lg">{offer.title}</Text>
+      <Text className="text-base text-[#FFBE29]">{offer.description}</Text>
+      <Text className="text-green-500 font-bold">From {offer.price} USD</Text>
+    </View>
+  </View>
+);
 
-export default function Offer({ offer }) {
-  return (
-    <StyledView className="mb-4">
-      <Image source={{ uri: offer.image }} style={{ width: '100%', height: 200 }} />
-      <StyledText className="text-white font-bold">{offer.title}</StyledText>
-      <StyledText className="text-gray-400">{offer.description}</StyledText>
-      <StyledText className="text-green-500 font-bold">From {offer.price} USD</StyledText>
-    </StyledView>
-  );
-}
+export default Offer;

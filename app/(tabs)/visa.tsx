@@ -47,7 +47,7 @@ export default function Visa() {
   };
 
   return (
-    <ScrollView className="bg-[#1E1E1E] flex-1 px-4 mt-12">
+    <ScrollView className="bg-[#1E1E1E] flex-1 px-4 pt-12">
       <View className="flex-1 flex-row gap-2 pt-6">
         <Pressable className="mt-12 bg-white inline-block rounded-lg p-2 w-10">
           <Ionicons name="search" size={24} color="black" />
@@ -99,7 +99,7 @@ export default function Visa() {
         </Pressable>
       </View>
 
-      <View>
+      <View className="pb-12">
         <StepItem
           number="1"
           title="Select Your Visa Type"

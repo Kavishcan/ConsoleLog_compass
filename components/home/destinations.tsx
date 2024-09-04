@@ -1,63 +1,78 @@
 import React, { useState } from "react";
-import { styled } from "nativewind";
-import { View, Text, Image } from "react-native";
-
-// Icons
+import { View, Text, FlatList, Image, Dimensions } from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import { ScrollView } from "react-native-gesture-handler";
+import Destination from "./subComponents/destination"; // Adjust the import path as necessary
 
-// importing sub components
-import Destination from "./subComponents/destination";
+const destinations = [
+  {
+    id: "1",
+    image: require("../../assets/images/home/sigiriya.png"),
+    description: "Lion Rock Citadel",
+    title: "Sigiriya",
+  },
+  {
+    id: "2",
+    image: require("../../assets/images/home/kandy.png"),
+    description: "Hill Capital of Heritage",
+    title: "Kandy",
+  },
+];
 
-const StyledView = styled(View);
-const StyledText = styled(Text);
-
-export default function Destinations() {
+const Destinations = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const handleScroll = (event: {
-    nativeEvent: {
-      contentOffset: { x: number };
-      layoutMeasurement: { width: number };
-    };
-  }) => {
+  const handleScroll = (event) => {
     const contentOffset = event.nativeEvent.contentOffset.x;
     const itemWidth = event.nativeEvent.layoutMeasurement.width;
     const newIndex = Math.round(contentOffset / itemWidth);
     setActiveIndex(newIndex);
   };
 
+  const renderItem = ({ item }) => (
+    <View key={item.id} className="relative mr-4">
+      <Image
+        source={item.image}
+        style={{
+          width: Dimensions.get("screen").width * 0.9,
+          height: 180,
+          borderRadius: 15,
+        }}
+      />
+      <View className="absolute bottom-2 left-2 right-2 bg-transparent bg-opacity-50 rounded-lg p-2">
+        <Text className="text-white font-bold text-lg">{item.title}</Text>
+        <Text className="text-base text-[#FFBE29]">{item.description}</Text>
+      </View>
+    </View>
+  );
+
   return (
-    <StyledView className="w-[90%] m-auto">
+    <View>
       {/* title */}
-      <StyledView className="w-full flex flex-row items-center justify-between mb-2">
-        <StyledText className="text-white" style={{ fontSize: 24,}}>Top Destinations</StyledText>
-        <StyledView className="flex flex-row items-center gap-2">
-          <StyledText className="text-white">View All</StyledText>
+      <View className="flex flex-row items-center justify-between my-4 mx-2">
+        <Text className="text-white text-2xl font-extralight">
+          Top Destinations
+        </Text>
+        <View className="flex flex-row items-center gap-2">
+          <Text className="text-white">View All</Text>
           <AntDesign name="arrowright" size={20} color="#FFBE29" />
-        </StyledView>
-      </StyledView>
+        </View>
+      </View>
 
       {/* scrollable views */}
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        pagingEnabled
-        onScroll={handleScroll}
-      >
-        <View className="flex flex-row">
-          <Destination
-            image="../../assets/images/home/sigiriya.png"
-            description="Lion Rock Citadel"
-            title="Sigiriya"
-          />
-          <Destination
-            image="../../assets/images/home/kandy.png"
-            description="Hill Capital of Heritag"
-            title="Kandy"
-          />
-        </View>
-      </ScrollView>
-    </StyledView>
+      <View className="mt-4">
+        <FlatList
+          data={destinations}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          pagingEnabled
+          onScroll={handleScroll}
+          contentContainerStyle={{ flexDirection: "row" }}
+        />
+      </View>
+    </View>
   );
-}
+};
+
+export default Destinations;
