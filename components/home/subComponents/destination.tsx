@@ -21,7 +21,7 @@ interface DestinationProps {
 const Destination = ({ image, title, description }: DestinationProps) => {
   return (
     // <StyledImageBackground source={{ uri: image }} style={[styles.container]} className='rounded-md'>
-      <StyledImageBackground resizeMode="stretch" style={styles.container} source={{ uri: image }} className="w-full h-full" imageStyle={{ borderRadius: 6}}>
+      <StyledImageBackground resizeMode="stretch" style={styles.container} source={{ uri: image }} className="w-full h-full mr-4" imageStyle={{ borderRadius: 6}}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.description}>{description}</Text>
       </StyledImageBackground>
@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     color: "#EB7400",
     textAlign: "center",
     marginLeft: 5,
+    marginBottom: 5,
   },
 });
 
