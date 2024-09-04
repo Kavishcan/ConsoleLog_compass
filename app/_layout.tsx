@@ -11,6 +11,11 @@ export default function RootLayout() {
     <Stack>
       <Stack.Screen name="index" />
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen
+        name="onArrivalVisaApply/index"
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen name="visaApply/index" options={{ headerShown: false }} />
     </Stack>
   );
 }
