@@ -1,5 +1,5 @@
-'use client';
-import { useRouter } from 'next/navigation';
+"use client";
+import { useRouter } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -51,8 +51,10 @@ export default function Dashboard() {
     <Card>
       <CardHeader className="px-7">
         <CardTitle>Recent Visa Applications</CardTitle>
-        <CardDescription>Here you can find the latest visa application statuses and details.</CardDescription>
-        </CardHeader>
+        <CardDescription>
+          Here you can find the latest visa application statuses and details.
+        </CardDescription>
+      </CardHeader>
       <CardContent>
         <Table>
           <TableHeader>
@@ -68,27 +70,35 @@ export default function Dashboard() {
           </TableHeader>
           <TableBody>
             {applications.map((application, index) => {
-              const isDisabled = application.state === 'Approved' || application.state === 'Rejected';
-              
+              const isDisabled =
+                application.state === "Approved" ||
+                application.state === "Rejected";
+
               return (
                 <TableRow key={index}>
                   <TableCell>{application.applicant}</TableCell>
-                  <TableCell className="hidden sm:table-cell">{application.visaId}</TableCell>
-                  <TableCell className="hidden sm:table-cell">{application.type}</TableCell>
-                  <TableCell className="hidden md:table-cell">{application.country}</TableCell>
+                  <TableCell className="hidden sm:table-cell">
+                    {application.visaId}
+                  </TableCell>
+                  <TableCell className="hidden sm:table-cell">
+                    {application.type}
+                  </TableCell>
+                  <TableCell className="hidden md:table-cell">
+                    {application.country}
+                  </TableCell>
                   <TableCell className="text-right">
                     {new Date(application.submissionDate).toLocaleDateString()}
                   </TableCell>
                   <TableCell className="text-right">
-                    <Badge>
-                      {application.state}
-                    </Badge>
+                    <Badge>{application.state}</Badge>
                   </TableCell>
                   <TableCell className="text-right">
                     <button
                       type="button"
-                      className={`btn btn-primary ${isDisabled ? 'cursor-not-allowed opacity-50' : ''}`}
-                      onClick={() => !isDisabled && router.push('/wizard')}
+                      className={`btn btn-primary ${
+                        isDisabled ? "cursor-not-allowed opacity-50" : ""
+                      }`}
+                      onClick={() => !isDisabled && router.push("/wizard")}
                       aria-label={`View more details for ${application.visaId}`}
                       disabled={isDisabled}
                     >
